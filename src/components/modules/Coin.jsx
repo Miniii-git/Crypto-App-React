@@ -1,7 +1,6 @@
 import React from "react";
 
 export default function Coin({ coin }) {
-  console.log(coin);
   return (
     <div>
       <img src={coin.image} alt={coin.name} width="15px" />
