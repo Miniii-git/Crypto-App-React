@@ -2,7 +2,7 @@ import React from "react";
 import Coin from "./Coin";
 import styles from "./tableCoin.module.css";
 
-function TableCoins({ coinsData }) {
+function TableCoins({ coinsData, currency }) {
   return (
     <>
       <div className={styles.titleOfTable}>
@@ -14,7 +14,7 @@ function TableCoins({ coinsData }) {
       </div>
       <div>
         {coinsData.map((coin) => (
-          <Coin key={coin.id} coin={coin} />
+          <Coin key={coin.id} coin={coin} currency={currency} />
         ))}
       </div>
     </>

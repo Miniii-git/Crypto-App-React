@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Coin.module.css";
 import upGraph from "../../assets/chart-up.svg";
 import downGraph from "../../assets/chart-down.svg";
 
-export default function Coin({ coin }) {
+export default function Coin({ coin, currency }) {
+  const [sign, setSign] = useState("$");
+  useEffect(() => {
+    if (currency === "usd") {
+      setSign("$");
+    }
+    if (currency === "eur") {
+      setSign("€");
+    }
+    if (currency === "jpy") {
+      setSign("¥");
+    }
+  }, [currency]);
+
   const showGraph = () => {
     console.log("graph");
   };
@@ -19,7 +32,7 @@ export default function Coin({ coin }) {
       </div>
       <p>{coin.name}</p>
       <p>
-        <span>$ </span>
+        <span>{sign}&nbsp;</span>
         {coin.current_price}
       </p>
       <p

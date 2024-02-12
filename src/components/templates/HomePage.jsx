@@ -11,11 +11,12 @@ function HomePage() {
   const [page, setPage] = useState(1);
   const [end, setEnd] = useState(false);
   const [start, setStart] = useState(false);
+  const [currency, setCurrency] = useState("usd");
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&locale=en&x_cg_demo_api_key=${key}`
+          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&locale=en&x_cg_demo_api_key=${key}`
         );
         const json = await res.json();
         setData(json);
@@ -35,7 +36,7 @@ function HomePage() {
       }
     }
     fetchData();
-  }, [page]);
+  }, [page, currency]);
 
   const changeHandler = (event) => {
     setTyping(event.target.value);
@@ -69,6 +70,10 @@ function HomePage() {
     setEnd(false);
   };
 
+  const changeCurrency = (event) => {
+    setCurrency(event.target.value);
+  };
+
   return (
     <>
       <input
@@ -77,10 +82,15 @@ function HomePage() {
         value={typing}
         onChange={changeHandler}
       />
-      <button onClick={clickHandler}> *** </button>
+      <button onClick={clickHandler}> *** </button>{" "}
+      <select onChange={changeCurrency}>
+        <option value="usd">USD</option>
+        <option value="eur">EUR</option>
+        <option value="jpy">JPY</option>
+      </select>
       <br />
       <br />
-      <TableCoins coinsData={data} />
+      <TableCoins coinsData={data} currency={currency} />
       <div className={styles.pageButtons}>
         <input
           type="submit"
