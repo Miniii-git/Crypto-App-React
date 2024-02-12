@@ -1,4 +1,9 @@
 .pageButtons * {
-  padding: 2px;
+  padding: 1px;
   margin: 5px;
+}
+
+.pageButtons {
+  text-align: center;
+  margin-top: 20px;
 }

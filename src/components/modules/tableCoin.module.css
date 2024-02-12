@@ -1,0 +1,9 @@
+.titleOfTable {
+  display: grid;
+  column-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  margin: 14px;
+  font-weight: 700;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.444);
+  padding-bottom: 10px;
+}
