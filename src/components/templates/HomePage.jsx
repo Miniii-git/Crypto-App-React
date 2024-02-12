@@ -9,6 +9,8 @@ function HomePage() {
   const [typing, setTyping] = useState("");
   const [searchedItem, setSearchedItem] = useState("");
   const [page, setPage] = useState(1);
+  const [end, setEnd] = useState(false);
+  const [start, setStart] = useState(false);
   useEffect(() => {
     async function fetchData() {
       const res = await fetch(
@@ -16,6 +18,16 @@ function HomePage() {
       );
       const json = await res.json();
       setData(json);
+      if (page == 1) {
+        setStart(true);
+      } else {
+        setStart(false);
+      }
+      if (page == 20) {
+        setEnd(true);
+      } else {
+        setEnd(false);
+      }
       console.log(page);
     }
     fetchData();
@@ -36,19 +48,21 @@ function HomePage() {
   };
 
   const previousPage = (event) => {
-    if (page === 1) {
+    if (page == 1) {
       return;
     }
-    setPage((page) => page - 1);
+    setPage((page) => Number(page) - 1);
     console.log(page);
+    setStart(false);
   };
 
   const nextPage = (event) => {
-    if (page === 20) {
+    if (page == 20) {
       return;
     }
-    setPage((page) => page + 1);
+    setPage((page) => Number(page) + 1);
     console.log(page);
+    setEnd(false);
   };
 
   return (
@@ -64,13 +78,23 @@ function HomePage() {
       <br />
       <TableCoins coinsData={data} />
       <div className={styles.pageButtons}>
-        <input type="submit" onClick={previousPage} value="previous" />
+        <input
+          type="submit"
+          onClick={previousPage}
+          value="previous"
+          style={{ color: start && "grey", cursor: start && "default" }}
+        />
         <input type="submit" onClick={changePage} value={1} />
         <input type="submit" onClick={changePage} value={2} />
         <span>...</span>
         <input type="submit" onClick={changePage} value={19} />
         <input type="submit" onClick={changePage} value={20} />
-        <input type="submit" onClick={nextPage} value="next" />
+        <input
+          type="submit"
+          onClick={nextPage}
+          value="next"
+          style={{ color: end && "grey", cursor: end && "default" }}
+        />
       </div>
     </>
   );
