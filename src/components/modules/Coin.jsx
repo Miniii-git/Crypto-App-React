@@ -1,22 +1,30 @@
 import React from "react";
 import styles from "./Coin.module.css";
+import upGraph from "../../assets/chart-up.svg";
+import downGraph from "../../assets/chart-down.svg";
 
 export default function Coin({ coin }) {
+  const showGraph = () => {
+    console.log("graph");
+  };
   console.log(coin);
   return (
     <div className={styles.coinInfo}>
       <div>
         <img src={coin.image} alt={coin.name} width="15px" />
-        &nbsp; <span>{coin.symbol}</span>
+        &nbsp;{" "}
+        <a id={styles.coinSymbol} onClick={showGraph}>
+          {coin.symbol}
+        </a>
       </div>
       <p>{coin.name}</p>
-      <p>{coin.current_price}</p>
+      <p>
+        <span>$ </span>
+        {coin.current_price}
+      </p>
       <p
         style={{
-          color:
-            coin.price_change_percentage_24h <= 0
-              ? "rgba(234, 51, 51, 0.767)"
-              : "rgba(36, 172, 86, 0.726)",
+          color: coin.price_change_percentage_24h <= 0 ? "#d33535" : "#58bd7d",
         }}
       >
         {coin.price_change_percentage_24h >= 0
@@ -25,6 +33,7 @@ export default function Coin({ coin }) {
         &nbsp;%
       </p>
       <p>{coin.total_volume}</p>
+      <img src={coin.price_change_percentage_24h <= 0 ? downGraph : upGraph} />
     </div>
   );
 }

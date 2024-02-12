@@ -1,8 +1,18 @@
 .coinInfo {
   display: grid;
   column-gap: 20px;
-  grid-template-columns: 1fr 1.5fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1fr 1fr 1.3fr 1fr;
   margin: 12px;
   padding-bottom: 12px;
   border-bottom: 2px solid rgba(128, 128, 128, 0.044);
+}
+
+#coinSymbol {
+  color: rgb(196, 186, 186);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#coinSymbol:hover {
+  color: white;
 }
