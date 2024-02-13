@@ -1,5 +1,4 @@
 .pageButtons * {
-  padding: 1px;
   margin: 5px;
 }
 
@@ -10,4 +9,55 @@
 
 .pageButtons input {
   cursor: pointer;
+  background-color: #d2ff9d;
+  color: #1d4453;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  width: 25px;
+  height: 25px;
+}
+
+.pageButtons button {
+  cursor: pointer;
+  background-color: #d2ff9d;
+  color: #1d4453;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  width: 75px;
+  height: 25px;
+}
+
+.pageButtons button:hover,
+input:hover {
+  box-shadow: 0 0 2px white;
+  color: #14303a;
+}
+
+#searchInput {
+  background-color: #f7fdff;
+  color: #1d4453;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+  width: 30%;
+  height: 25px;
+  padding: 8px;
+  margin-right: 20px;
+  outline: none;
+}
+
+#selectCurrency {
+  background-color: #f7fdff;
+  border-radius: 8px;
+  height: 25px;
+  width: 10%;
+  outline: none;
+  color: #1d4453;
+  font-weight: bold;
+}
+
+#selectCurrency option:hover {
+  background-color: #e900b2;
 }

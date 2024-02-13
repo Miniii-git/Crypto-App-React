@@ -42,11 +42,6 @@ function HomePage() {
     setTyping(event.target.value);
   };
 
-  const clickHandler = () => {
-    setSearchedItem(typing);
-    setTyping("");
-  };
-
   const changePage = (event) => {
     setPage(event.target.value);
     console.log(page);
@@ -81,9 +76,10 @@ function HomePage() {
         placeholder="Search"
         value={typing}
         onChange={changeHandler}
+        id={styles.searchInput}
       />
-      <button onClick={clickHandler}> *** </button>{" "}
-      <select onChange={changeCurrency}>
+
+      <select onChange={changeCurrency} id={styles.selectCurrency}>
         <option value="usd">USD</option>
         <option value="eur">EUR</option>
         <option value="jpy">JPY</option>
@@ -92,23 +88,23 @@ function HomePage() {
       <br />
       <TableCoins coinsData={data} currency={currency} />
       <div className={styles.pageButtons}>
-        <input
-          type="submit"
+        <button
           onClick={previousPage}
-          value="previous"
           style={{ color: start && "grey", cursor: start && "default" }}
-        />
+        >
+          previous
+        </button>
         <input type="submit" onClick={changePage} value={1} />
         <input type="submit" onClick={changePage} value={2} />
-        <span>...</span>
+        <span>. . .</span>
         <input type="submit" onClick={changePage} value={19} />
         <input type="submit" onClick={changePage} value={20} />
-        <input
-          type="submit"
+        <button
           onClick={nextPage}
-          value="next"
           style={{ color: end && "grey", cursor: end && "default" }}
-        />
+        >
+          next
+        </button>
       </div>
     </>
   );
