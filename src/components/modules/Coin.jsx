@@ -3,7 +3,17 @@ import styles from "./Coin.module.css";
 import upGraph from "../../assets/chart-up.svg";
 import downGraph from "../../assets/chart-down.svg";
 
-export default function Coin({ coin, currency }) {
+export default function Coin({
+  coin: {
+    image,
+    name,
+    symbol,
+    current_price,
+    total_volume,
+    price_change_percentage_24h: percentage_24h,
+  },
+  currency,
+}) {
   const [sign, setSign] = useState("$");
   useEffect(() => {
     if (currency === "usd") {
@@ -20,33 +30,32 @@ export default function Coin({ coin, currency }) {
   const showGraph = () => {
     console.log("graph");
   };
-  console.log(coin);
   return (
     <div className={styles.coinInfo}>
       <div>
-        <img src={coin.image} alt={coin.name} width="15px" />
+        <img src={image} alt={name} width="15px" />
         &nbsp;{" "}
         <a id={styles.coinSymbol} onClick={showGraph}>
-          {coin.symbol}
+          {symbol}
         </a>
       </div>
-      <p>{coin.name}</p>
+      <p>{name}</p>
       <p>
         <span>{sign}&nbsp;</span>
-        {coin.current_price}
+        {current_price.toLocaleString()}
       </p>
       <p
         style={{
-          color: coin.price_change_percentage_24h <= 0 ? "#d33535" : "#58bd7d",
+          color: percentage_24h <= 0 ? "#d33535" : "#58bd7d",
         }}
       >
-        {coin.price_change_percentage_24h >= 0
-          ? `+${coin.price_change_percentage_24h.toFixed(2)}`
-          : coin.price_change_percentage_24h.toFixed(2)}
+        {percentage_24h >= 0
+          ? `+${percentage_24h.toFixed(2)}`
+          : percentage_24h.toFixed(2)}
         &nbsp;%
       </p>
-      <p>{coin.total_volume}</p>
-      <img src={coin.price_change_percentage_24h <= 0 ? downGraph : upGraph} />
+      <p>{total_volume.toLocaleString()}</p>
+      <img src={percentage_24h <= 0 ? downGraph : upGraph} />
     </div>
   );
 }

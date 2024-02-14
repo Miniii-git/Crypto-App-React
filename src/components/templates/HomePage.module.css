@@ -3,8 +3,8 @@
 }
 
 .pageButtons {
-  text-align: center;
   margin-top: 20px;
+  text-align: center;
 }
 
 .pageButtons input {
@@ -56,8 +56,4 @@ input:hover {
   outline: none;
   color: #1d4453;
   font-weight: bold;
-}
-
-#selectCurrency option:hover {
-  background-color: #e900b2;
 }

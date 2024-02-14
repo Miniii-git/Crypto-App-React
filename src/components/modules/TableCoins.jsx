@@ -1,8 +1,9 @@
 import React from "react";
 import Coin from "./Coin";
 import styles from "./tableCoin.module.css";
+import { RotatingLines } from "react-loader-spinner";
 
-function TableCoins({ coinsData, currency }) {
+function TableCoins({ coinsData, currency, isloading }) {
   return (
     <>
       <div className={styles.titleOfTable}>
@@ -12,11 +13,17 @@ function TableCoins({ coinsData, currency }) {
         <span>24h</span>
         <span>Total Volume</span>
       </div>
-      <div>
-        {coinsData.map((coin) => (
-          <Coin key={coin.id} coin={coin} currency={currency} />
-        ))}
-      </div>
+      {isloading ? (
+        <div className={styles.spinner}>
+          <RotatingLines color="grey" />
+        </div>
+      ) : (
+        <div>
+          {coinsData.map((coin) => (
+            <Coin key={coin.id} coin={coin} currency={currency} />
+          ))}
+        </div>
+      )}
     </>
   );
 }

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import TableCoins from "../modules/TableCoins";
 import styles from "./HomePage.module.css";
 
-const key = "CG-4oY4nLcbx34Ps5SyFn5jZVaG";
+import { returnApiUrl } from "../../services/apiUrl";
 
 function HomePage() {
+  const [list, setList] = useState([]);
   const [data, setData] = useState([]);
   const [typing, setTyping] = useState("");
   const [searchedItem, setSearchedItem] = useState("");
@@ -12,14 +13,16 @@ function HomePage() {
   const [end, setEnd] = useState(false);
   const [start, setStart] = useState(false);
   const [currency, setCurrency] = useState("usd");
+  const [middlePage, setMiddlePage] = useState(false);
+  const [isloading, setIsloading] = useState(true);
+
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch(
-          `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&locale=en&x_cg_demo_api_key=${key}`
-        );
+        const res = await fetch(returnApiUrl(currency, page));
         const json = await res.json();
         setData(json);
+        setIsloading(false);
         if (page == 1) {
           setStart(true);
         } else {
@@ -30,10 +33,16 @@ function HomePage() {
         } else {
           setEnd(false);
         }
+        if (page >= 3 && page <= 18) {
+          setMiddlePage(true);
+        } else {
+          setMiddlePage(false);
+        }
         console.log(page);
       } catch (error) {
         console.log("some thing went wrong");
       }
+      console.log(data);
     }
     fetchData();
   }, [page, currency]);
@@ -86,7 +95,7 @@ function HomePage() {
       </select>
       <br />
       <br />
-      <TableCoins coinsData={data} currency={currency} />
+      <TableCoins coinsData={data} currency={currency} isloading={isloading} />
       <div className={styles.pageButtons}>
         <button
           onClick={previousPage}
@@ -96,7 +105,17 @@ function HomePage() {
         </button>
         <input type="submit" onClick={changePage} value={1} />
         <input type="submit" onClick={changePage} value={2} />
-        <span>. . .</span>
+
+        {middlePage ? (
+          <>
+            <span>. . .</span>
+            <input type="submit" onClick={changePage} value={page} />
+            <span>. . .</span>
+          </>
+        ) : (
+          <span>. . .</span>
+        )}
+
         <input type="submit" onClick={changePage} value={19} />
         <input type="submit" onClick={changePage} value={20} />
         <button

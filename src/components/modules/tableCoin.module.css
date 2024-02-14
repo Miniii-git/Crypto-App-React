@@ -1,3 +1,8 @@
+.spinner {
+  text-align: center;
+  padding: 200px;
+}
+
 .titleOfTable {
   display: grid;
   column-gap: 20px;
