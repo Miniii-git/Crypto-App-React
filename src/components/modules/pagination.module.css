@@ -1,0 +1,16 @@
+.pagination {
+  text-align: center;
+}
+
+.pagination * {
+  margin: 10px;
+  width: 50px;
+}
+
+.dis {
+  color: grey;
+}
+
+.onPage {
+  background-color: #437281;
+}
