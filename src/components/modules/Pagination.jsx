@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import styles from "./pagination.module.css";
 
 function Pagination({ page, setPage }) {
-  const [disabled, setDisabled] = useState(true);
-
   const goPrevious = () => {
     if (page === 1) {
       return;
