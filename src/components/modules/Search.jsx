@@ -1,16 +1,17 @@
 import styles from "./search.module.css";
 import React, { useEffect, useState } from "react";
-import { returnSearchList } from "../../services/apiUrl";
+import { returnApiForSearch } from "../../services/apiUrl";
 
 function Search({ typing, setTyping }) {
-  const [status, setStatus] = useState(null);
   const [searchList, setSearchList] = useState([]);
   useEffect(() => {
     async function fetchSearch() {
-      const res = await fetch(returnSearchList(typing));
+      const res = await fetch(returnApiForSearch(typing));
       const json = await res.json();
-      console.log(json);
+      setSearchList(json.coins);
+      console.log(searchList);
     }
+    fetchSearch();
   }, [typing]);
 
   const searchHandler = (event) => {
@@ -18,14 +19,6 @@ function Search({ typing, setTyping }) {
   };
   return (
     <>
-      {typing.length ? (
-        <div>
-          <ul>
-            <li>1</li>
-            <li>2</li>
-          </ul>
-        </div>
-      ) : null}
       <input
         type="text"
         placeholder="Search"
@@ -33,6 +26,20 @@ function Search({ typing, setTyping }) {
         onChange={searchHandler}
         id={styles.searchInput}
       />
+      {typing.length ? (
+        <div className={styles.searchList}>
+          <ul>
+            {searchList.map((coin) => (
+              <li key={coin.id}>
+                <a href="#" target="_blank">
+                  <img src={coin.thumb} width="15px" /> &nbsp; {coin.name}&nbsp;
+                  • {coin.symbol}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
     </>
   );
 }

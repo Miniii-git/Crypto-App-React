@@ -5,8 +5,8 @@ function returnApiUrl(currency, page) {
   return `${BASE_URL}/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=20&page=${page}&sparkline=false&locale=en&x_cg_demo_api_key=${KEY}`;
 }
 
-function returnSearchList(item) {
+function returnApiForSearch(item) {
   return `${BASE_URL}/search?query=${item}&x_cg_demo_api_key=${KEY}`;
 }
 
-export { returnApiUrl, returnSearchList };
+export { returnApiUrl, returnApiForSearch };
