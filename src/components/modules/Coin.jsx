@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Coin.module.css";
 import upGraph from "../../assets/chart-up.svg";
 import downGraph from "../../assets/chart-down.svg";
+import Graph from "./Graph";
 
 export default function Coin({
   coin: {
@@ -15,6 +16,7 @@ export default function Coin({
   currency,
 }) {
   const [sign, setSign] = useState("$");
+  const [graphSection, setGraphSection] = useState(false);
   useEffect(() => {
     if (currency === "usd") {
       setSign("$");
@@ -29,6 +31,7 @@ export default function Coin({
 
   const showGraph = () => {
     console.log("graph");
+    setGraphSection(true);
   };
   return (
     <div className={styles.coinInfo}>
@@ -56,6 +59,7 @@ export default function Coin({
       </p>
       <p>{total_volume.toLocaleString()}</p>
       <img src={percentage_24h <= 0 ? downGraph : upGraph} />
+      {graphSection ? <Graph setGraphSection={setGraphSection} /> : null}
     </div>
   );
 }
