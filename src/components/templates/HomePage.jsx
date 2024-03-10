@@ -17,14 +17,13 @@ function HomePage() {
 
   useEffect(() => {
     async function fetchData() {
+      setDiconnect(false);
+      setIsloading(true);
       try {
-        setDiconnect(false);
-        setIsloading(true);
         const res = await fetch(returnApiUrl(currency, page));
         const json = await res.json();
         setData(json);
         setIsloading(false);
-        console.log(page);
       } catch (error) {
         console.log("some thing went wrong");
         setTimeout(() => {
@@ -32,14 +31,12 @@ function HomePage() {
           console.log("no");
         }, 5000);
       }
-      console.log(data);
     }
     fetchData();
   }, [page, currency, diconnect]);
 
   const changePage = (event) => {
     setPage((page) => event.target.value);
-    console.log(page);
   };
 
   const previousPage = (event) => {
@@ -47,7 +44,7 @@ function HomePage() {
       return;
     }
     setPage((page) => Number(page) - 1);
-    console.log(page);
+
     setStart(false);
   };
 
@@ -56,7 +53,7 @@ function HomePage() {
       return;
     }
     setPage((page) => Number(page) + 1);
-    console.log(page);
+
     setEnd(false);
   };
 

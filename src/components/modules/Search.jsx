@@ -1,22 +1,27 @@
 import styles from "./search.module.css";
 import React, { useEffect, useState } from "react";
 import { returnApiForSearch } from "../../services/apiUrl";
+import { RotatingLines } from "react-loader-spinner";
 
 function Search({ typing, setTyping }) {
   const [searchList, setSearchList] = useState([]);
+  const [isloading, setIsloading] = useState(true);
   const abortRequset = new AbortController();
   useEffect(() => {
     async function fetchSearch() {
+      setIsloading(true);
       try {
         const res = await fetch(returnApiForSearch(typing), {
           signal: abortRequset.signal,
         });
         const json = await res.json();
+        setIsloading(false);
         setSearchList(json.coins);
-        console.log(searchList);
       } catch (err) {
         if (err.name === "AbortError") {
-          return;
+          console.log("aborted");
+        } else {
+          setIsloading(false);
           console.log("something went wrong while searching");
         }
       }
@@ -41,16 +46,22 @@ function Search({ typing, setTyping }) {
       />
       {typing.length ? (
         <div className={styles.searchList}>
-          <ul>
-            {searchList.map((coin) => (
-              <li key={coin.id}>
-                <a href="#" target="_blank">
-                  <img src={coin.thumb} width="15px" /> &nbsp; {coin.name}&nbsp;
-                  • {coin.symbol}
-                </a>
-              </li>
-            ))}
-          </ul>
+          {isloading ? (
+            <div>
+              <RotatingLines color="grey" />
+            </div>
+          ) : (
+            <ul>
+              {searchList.map((coin) => (
+                <li key={coin.id}>
+                  <a href="#" target="_blank">
+                    <img src={coin.thumb} width="15px" /> &nbsp; {coin.name}
+                    &nbsp; • {coin.symbol}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       ) : null}
     </>
