@@ -15,7 +15,7 @@ function TableCoins({ coinsData, currency, isloading }) {
       </div>
       {isloading ? (
         <div className={styles.spinner}>
-          <RotatingLines color="grey" />
+          <RotatingLines strokeWidth="4" strokeColor="#3874ff" />
         </div>
       ) : (
         <div>

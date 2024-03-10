@@ -44,11 +44,12 @@ function Search({ typing, setTyping }) {
         onChange={searchHandler}
         id={styles.searchInput}
       />
+
       {typing.length ? (
         <div className={styles.searchList}>
           {isloading ? (
-            <div>
-              <RotatingLines color="grey" />
+            <div id={styles.rotate}>
+              <RotatingLines width="60" strokeWidth="3" strokeColor="pink" />
             </div>
           ) : (
             <ul>

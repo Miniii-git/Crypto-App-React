@@ -1,9 +1,13 @@
 #selectCurrency {
   background-color: #f7fdff;
   border-radius: 8px;
-  height: 25px;
-  width: 10%;
   outline: none;
   color: #1d4453;
   font-weight: bold;
+  height: 35px;
+  width: 80px;
+  border-radius: 4px;
+  border: none;
+  padding: 10px;
+  outline: none;
 }
