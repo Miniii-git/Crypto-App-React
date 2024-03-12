@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import styles from "./Coin.module.css";
 import upGraph from "../../assets/chart-up.svg";
 import downGraph from "../../assets/chart-down.svg";
-import Graph from "./Graph";
+import Chart from "./Chart";
+import { returnApiForChart } from "../../services/apiUrl";
 
 export default function Coin({
   coin: {
+    id,
     image,
     name,
     symbol,
@@ -16,7 +18,9 @@ export default function Coin({
   currency,
 }) {
   const [sign, setSign] = useState("$");
-  const [graphSection, setGraphSection] = useState(false);
+
+  const [chartSection, setChartSection] = useState(null);
+
   useEffect(() => {
     if (currency === "usd") {
       setSign("$");
@@ -29,16 +33,27 @@ export default function Coin({
     }
   }, [currency]);
 
-  const showGraph = () => {
-    console.log("graph");
-    setGraphSection(true);
+  const showChart = async () => {
+    try {
+      const res = await fetch(returnApiForChart(id));
+      const json = await res.json();
+      setChartSection(json);
+    } catch {
+      console.log("err");
+    }
   };
   return (
     <div className={styles.coinInfo}>
       <div>
-        <img src={image} alt={name} width="15px" />
+        <img
+          src={image}
+          alt={name}
+          width="15px"
+          onClick={showChart}
+          id={styles.coinThumb}
+        />
         &nbsp;{" "}
-        <a id={styles.coinSymbol} onClick={showGraph}>
+        <a id={styles.coinSymbol} onClick={showChart}>
           {symbol}
         </a>
       </div>
@@ -59,7 +74,9 @@ export default function Coin({
       </p>
       <p>{total_volume.toLocaleString()}</p>
       <img src={percentage_24h <= 0 ? downGraph : upGraph} />
-      {graphSection ? <Graph setGraphSection={setGraphSection} /> : null}
+      {!!chartSection ? (
+        <Chart setChartSection={setChartSection} chartSection={chartSection} />
+      ) : null}
     </div>
   );
 }

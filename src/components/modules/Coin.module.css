@@ -15,4 +15,9 @@
 
 #coinSymbol:hover {
   color: white;
+  cursor: pointer;
+}
+
+#coinThumb:hover {
+  cursor: pointer;
 }
