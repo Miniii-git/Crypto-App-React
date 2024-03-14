@@ -15,6 +15,7 @@ export default function Coin({
     total_volume,
     price_change_percentage_24h: percentage_24h,
   },
+  coin,
   currency,
 }) {
   const [sign, setSign] = useState("$");
@@ -75,7 +76,14 @@ export default function Coin({
       <p>{total_volume.toLocaleString()}</p>
       <img src={percentage_24h <= 0 ? downGraph : upGraph} />
       {!!chartSection ? (
-        <Chart setChartSection={setChartSection} chartSection={chartSection} />
+        <Chart
+          coin={coin}
+          setChartSection={setChartSection}
+          chartSection={chartSection}
+          image={image}
+          symbol={symbol}
+          name={name}
+        />
       ) : null}
     </div>
   );

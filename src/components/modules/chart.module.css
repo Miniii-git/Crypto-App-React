@@ -25,10 +25,63 @@
 .chartSection {
   margin: auto;
   margin-top: 50px;
-  width: 80%;
+  width: 800px;
+  height: 60%;
   background-color: #18181ce6;
   border: 2px solid #404042;
   border-radius: 20px;
   padding: 20px;
   color: black;
+}
+
+.graph {
+  width: 760px;
+  height: 300px;
+}
+
+.head {
+  color: white;
+  font-size: 26px;
+  display: flex;
+  font-weight: 700;
+  justify-content: space-between;
+}
+
+.S_N {
+  display: flex;
+}
+
+.head img {
+  width: 40px;
+  margin-right: 20px;
+}
+
+.radio input {
+  margin-right: 20px;
+  margin-left: 5px;
+}
+.radio label {
+  font-size: 16px;
+}
+
+.selected {
+  background-color: #8884d8;
+  color: white;
+}
+.buttons * {
+  margin: 20px;
+  padding: 8px 4px 8px 4px;
+  width: 110px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px;
+  color: #302c72;
+}
+
+.details {
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  font-size: 16px;
 }

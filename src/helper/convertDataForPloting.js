@@ -1,7 +1,8 @@
 const convertDataForPloting = (data, type) => {
   const listOfObj = data[type].map((array) => {
+    const date = new Date(array[0]);
     return {
-      time: array[0],
+      time: date.toLocaleString(),
       [type]: array[1],
     };
   });
