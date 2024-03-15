@@ -19,7 +19,7 @@ function Pagination({ page, setPage }) {
   return (
     <div className={styles.pagination}>
       <button onClick={goPrevious} className={page === 1 ? styles.dis : null}>
-        previous
+        &#10094;
       </button>
       <button
         onClick={() => setPage(1)}
@@ -57,7 +57,7 @@ function Pagination({ page, setPage }) {
         20
       </button>
       <button onClick={goNext} className={page === 20 ? styles.dis : null}>
-        next
+        &#10095;
       </button>
     </div>
   );

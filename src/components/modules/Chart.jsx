@@ -34,21 +34,21 @@ function Chart({
         X
       </button>
       <div className={styles.chartSection}>
-        <div className={styles.graph}>
-          <div className={styles.head}>
-            <div className={styles.S_N}>
-              <img src={image} alt={symbol} />
-              <span>{name}</span> &nbsp;(<span>&nbsp;{symbol}&nbsp;</span>)
-            </div>
-            <div className={styles.radio}>
-              <label htmlFor="7">7</label>
-              <input name="range" type="radio" value={7} id="7" />
-              <label htmlFor="14">14</label>
-              <input name="range" type="radio" value={14} />
-              <label htmlFor="30">30</label>
-              <input name="range" type="radio" value={30} />
-            </div>
+        <div className={styles.head}>
+          <div className={styles.S_N}>
+            <img src={image} alt={symbol} />
+            <span>{name}</span> &nbsp;(<span>&nbsp;{symbol}&nbsp;</span>)
           </div>
+          <div className={styles.radio}>
+            <label htmlFor="7">7</label>
+            <input name="range" type="radio" value={7} id="7" />
+            <label htmlFor="14">14</label>
+            <input name="range" type="radio" value={14} />
+            <label htmlFor="30">30</label>
+            <input name="range" type="radio" value={30} />
+          </div>
+        </div>
+        <div className={styles.graph}>
           <Rechart convertedData={convertedData} type={type} />
           <div className={styles.buttons}>
             <button
@@ -87,13 +87,11 @@ function Rechart({ convertedData, type }) {
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart
-        width={400}
-        height={400}
         data={convertedData}
         margin={{
           top: 50,
           right: 10,
-          left: 10,
+          left: 60,
           bottom: 5,
         }}
       >
@@ -106,7 +104,7 @@ function Rechart({ convertedData, type }) {
           dot={false}
         />
         <YAxis dataKey={type} domain={["auto", "auto"]} />
-        <XAxis dataKey="time" hide padding={{ left: 10, right: 10 }} />
+        <XAxis dataKey="time" hide padding={{ left: 1, right: 20 }} />
         <Legend />
         <Tooltip />
       </LineChart>

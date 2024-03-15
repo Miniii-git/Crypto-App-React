@@ -8,9 +8,7 @@
 
 body {
   margin: auto;
-  max-width: 1000px;
   min-height: 1vh;
-  padding: 10px;
 }
 
 * {

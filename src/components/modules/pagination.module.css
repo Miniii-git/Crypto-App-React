@@ -1,16 +1,27 @@
 .pagination {
   text-align: center;
+  margin-top: 50px;
 }
 
 .pagination * {
   margin: 10px;
-  width: 50px;
+  width: 40px;
 }
 
 .dis {
-  color: grey;
+  color: rgb(178, 178, 178);
+}
+
+.pagination button,
+input {
+  border-radius: 20%;
+  padding: 6px;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .onPage {
-  background-color: #437281;
+  background-color: #041319;
+  color: white;
+  font-weight: 700;
 }

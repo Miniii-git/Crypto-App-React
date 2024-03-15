@@ -62,7 +62,7 @@ function HomePage() {
   };
 
   return (
-    <>
+    <div className={styles.HomePage}>
       <Search typing={typing} setTyping={setTyping} />
       <select onChange={changeCurrency} id={styles.selectCurrency}>
         <option value="usd">USD</option>
@@ -73,7 +73,7 @@ function HomePage() {
       <br />
       <TableCoins coinsData={data} currency={currency} isloading={isloading} />
       <Pagination page={page} setPage={setPage} />
-    </>
+    </div>
   );
 }
 

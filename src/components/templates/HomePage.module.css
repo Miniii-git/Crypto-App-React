@@ -1,8 +1,14 @@
+.HomePage {
+  max-width: 1100px;
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
 #selectCurrency {
-  background-color: #f7fdff;
+  background-color: #ebeff1;
   border-radius: 8px;
   outline: none;
-  color: #1d4453;
+  color: #092834;
   font-weight: bold;
   height: 35px;
   width: 80px;
