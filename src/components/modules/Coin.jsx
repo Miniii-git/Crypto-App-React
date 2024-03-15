@@ -94,7 +94,10 @@ export default function Coin({
         &nbsp;%
       </p>
       <p>{total_volume.toLocaleString()}</p>
-      <img src={percentage_24h <= 0 ? downGraph : upGraph} />
+      <img
+        src={percentage_24h <= 0 ? downGraph : upGraph}
+        id={styles.thumbGraph}
+      />
       {showChart ? (
         <Chart
           coin={coin}

@@ -3,7 +3,9 @@
   column-gap: 20px;
   grid-template-columns: 1fr 1.5fr 1fr 1fr 1.3fr 1fr;
   margin: 12px;
-  padding-bottom: 12px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+
   border-bottom: 1px solid #122128;
 }
 
@@ -11,11 +13,6 @@
   color: rgb(196, 186, 186);
   text-decoration: none;
   font-weight: bold;
-}
-
-#coinThumb {
-  position: relative;
-  top: 2px;
 }
 
 #coinSymbol:hover {
