@@ -21,16 +21,18 @@ function Chart({
     total_volume,
     price_change_percentage_24h: percentage_24h,
   },
-  setChartSection,
-  chartSection,
+  setRange,
+  chartData,
+  setShowChart,
+  range,
 }) {
   const [type, setType] = useState("prices");
 
-  const convertedData = convertDataForPloting(chartSection, type);
+  const convertedData = convertDataForPloting(chartData, type);
 
   return (
     <div className={styles.container}>
-      <button className={styles.exist} onClick={() => setChartSection(false)}>
+      <button className={styles.exist} onClick={() => setShowChart(false)}>
         X
       </button>
       <div className={styles.chartSection}>
@@ -40,12 +42,38 @@ function Chart({
             <span>{name}</span> &nbsp;(<span>&nbsp;{symbol}&nbsp;</span>)
           </div>
           <div className={styles.radio}>
+            <label htmlFor="1">1</label>
+            <input
+              name="range"
+              type="radio"
+              value={1}
+              onClick={() => setRange(1)}
+              checked={range === 1}
+            />
             <label htmlFor="7">7</label>
-            <input name="range" type="radio" value={7} id="7" />
+            <input
+              name="range"
+              type="radio"
+              value={7}
+              onClick={() => setRange(7)}
+              checked={range === 7}
+            />
             <label htmlFor="14">14</label>
-            <input name="range" type="radio" value={14} />
+            <input
+              name="range"
+              type="radio"
+              value={14}
+              onClick={() => setRange(14)}
+              checked={range === 14}
+            />
             <label htmlFor="30">30</label>
-            <input name="range" type="radio" value={30} />
+            <input
+              name="range"
+              type="radio"
+              value={30}
+              onClick={() => setRange(30)}
+              checked={range === 30}
+            />
           </div>
         </div>
         <div className={styles.graph}>
@@ -72,8 +100,7 @@ function Chart({
           </div>
           <div className={styles.details}>
             <p>Current Price : $ {current_price.toLocaleString()}</p>
-            <p>Total Volume : {total_volume}</p>
-            <p>Percentage Change 24h : {percentage_24h.toFixed(2)} %</p>
+            <p> Current Total Volume : {total_volume}</p>
           </div>
         </div>
       </div>

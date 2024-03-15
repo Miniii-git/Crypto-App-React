@@ -13,6 +13,11 @@
   font-weight: bold;
 }
 
+#coinThumb {
+  position: relative;
+  top: 2px;
+}
+
 #coinSymbol:hover {
   color: white;
   cursor: pointer;

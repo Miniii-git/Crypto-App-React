@@ -9,8 +9,8 @@ function returnApiForSearch(item) {
   return `${BASE_URL}/search?query=${item}&x_cg_demo_api_key=${KEY}`;
 }
 
-function returnApiForChart(id) {
-  return `${BASE_URL}/coins/${id}/market_chart?vs_currency=usd&days=7&x_cg_demo_api_key=${KEY}`;
+function returnApiForChart(id, range) {
+  return `${BASE_URL}/coins/${id}/market_chart?vs_currency=usd&days=${range}&x_cg_demo_api_key=${KEY}`;
 }
 
 export { returnApiUrl, returnApiForSearch, returnApiForChart };

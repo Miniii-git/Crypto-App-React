@@ -19,8 +19,9 @@ export default function Coin({
   currency,
 }) {
   const [sign, setSign] = useState("$");
-
-  const [chartSection, setChartSection] = useState(null);
+  const [showChart, setShowChart] = useState(false);
+  const [chartData, setChartData] = useState(null);
+  const [range, setRange] = useState(1);
 
   useEffect(() => {
     if (currency === "usd") {
@@ -34,27 +35,46 @@ export default function Coin({
     }
   }, [currency]);
 
-  const showChart = async () => {
-    try {
-      const res = await fetch(returnApiForChart(id));
-      const json = await res.json();
-      setChartSection(json);
-    } catch {
-      console.log("err");
+  useEffect(() => {
+    const ploting = async () => {
+      try {
+        const res = await fetch(returnApiForChart(id, range));
+        const json = await res.json();
+        setChartData(json);
+      } catch {
+        console.log("err");
+      }
+    };
+    ploting();
+  }, [range]);
+
+  useEffect(() => {
+    if (showChart) {
+      const ploting = async () => {
+        try {
+          const res = await fetch(returnApiForChart(id, range));
+          const json = await res.json();
+          setChartData(json);
+        } catch {
+          console.log("err");
+        }
+      };
+      ploting();
     }
-  };
+  }, [showChart]);
+
   return (
     <div className={styles.coinInfo}>
       <div>
         <img
           src={image}
           alt={name}
-          width="15px"
-          onClick={showChart}
+          width="16px"
+          onClick={() => setShowChart(true)}
           id={styles.coinThumb}
         />
         &nbsp;{" "}
-        <a id={styles.coinSymbol} onClick={showChart}>
+        <a id={styles.coinSymbol} onClick={() => setShowChart(true)}>
           {symbol}
         </a>
       </div>
@@ -75,14 +95,17 @@ export default function Coin({
       </p>
       <p>{total_volume.toLocaleString()}</p>
       <img src={percentage_24h <= 0 ? downGraph : upGraph} />
-      {!!chartSection ? (
+      {showChart ? (
         <Chart
           coin={coin}
-          setChartSection={setChartSection}
-          chartSection={chartSection}
+          setChartData={setChartData}
+          setShowChart={setShowChart}
+          chartData={chartData}
           image={image}
           symbol={symbol}
           name={name}
+          setRange={setRange}
+          range={range}
         />
       ) : null}
     </div>

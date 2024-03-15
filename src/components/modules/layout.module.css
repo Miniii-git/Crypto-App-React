@@ -1,5 +1,5 @@
 .header {
-  background-color: #dadfe2;
+  background-color: #dbddde;
   height: 80px;
   display: flex;
   padding-top: 10px;
@@ -15,11 +15,11 @@
   font-size: 30px;
   margin-right: 15px;
   line-height: 58px;
-  color: #59013d;
+  color: #190a04;
 }
 
 .footer {
-  background-color: #dadfe2;
+  background-color: #dbddde;
   height: 220px;
   color: #041319;
 }
@@ -34,14 +34,14 @@
 .footer h5 {
   text-align: center;
   font-size: 16px;
-  color: #041319d2;
+  color: #273439;
 }
 #mini {
   text-decoration: none;
   color: #041319d2;
 }
 #mini:hover {
-  color: #020b24;
+  color: #041319;
 }
 .about {
   display: flex;
@@ -65,9 +65,9 @@
   margin: 15px;
   font-size: 25px;
   transition: 150ms ease-in-out;
-  color: #59013d;
+  color: #273439;
 }
 
 .links a:hover {
-  color: #001b32;
+  color: #020b24;
 }
