@@ -2,9 +2,10 @@
   display: grid;
   column-gap: 20px;
   grid-template-columns: 1fr 1.5fr 1fr 1fr 1.3fr 1fr;
+  align-items: end;
   margin: 12px;
-  padding-bottom: 4px;
-  padding-top: 4px;
+  padding-bottom: 8px;
+  padding-top: 0px;
 
   border-bottom: 1px solid #122128;
 }

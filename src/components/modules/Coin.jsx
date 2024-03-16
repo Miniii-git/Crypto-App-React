@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, PureComponent } from "react";
 import styles from "./Coin.module.css";
 import upGraph from "../../assets/chart-up.svg";
 import downGraph from "../../assets/chart-down.svg";
 import Chart from "./Chart";
+import LittleGraph from "./LittleGraph";
 import { returnApiForChart } from "../../services/apiUrl";
 
 export default function Coin({
@@ -64,40 +65,47 @@ export default function Coin({
   }, [showChart]);
 
   return (
-    <div className={styles.coinInfo}>
-      <div>
-        <img
-          src={image}
-          alt={name}
-          width="16px"
-          onClick={() => setShowChart(true)}
-          id={styles.coinThumb}
-        />
-        &nbsp;{" "}
-        <a id={styles.coinSymbol} onClick={() => setShowChart(true)}>
-          {symbol}
-        </a>
-      </div>
-      <p>{name}</p>
-      <p>
-        <span>{sign}&nbsp;</span>
-        {current_price.toLocaleString()}
-      </p>
-      <p
-        style={{
-          color: percentage_24h <= 0 ? "#d33535" : "#58bd7d",
-        }}
-      >
-        {percentage_24h >= 0
-          ? `+${percentage_24h.toFixed(2)}`
-          : percentage_24h.toFixed(2)}
-        &nbsp;%
-      </p>
-      <p>{total_volume.toLocaleString()}</p>
-      <img
+    <div>
+      <div className={styles.coinInfo}>
+        <div>
+          <img
+            src={image}
+            alt={name}
+            width="16px"
+            onClick={() => setShowChart(true)}
+            id={styles.coinThumb}
+          />
+          &nbsp;{" "}
+          <a id={styles.coinSymbol} onClick={() => setShowChart(true)}>
+            {symbol}
+          </a>
+        </div>
+        <p>{name}</p>
+        <p>
+          <span>{sign}&nbsp;</span>
+          {current_price.toLocaleString()}
+        </p>
+        <p
+          style={{
+            color: percentage_24h <= 0 ? "#d94343dd" : "#58bd7d",
+          }}
+        >
+          {percentage_24h >= 0
+            ? `+${percentage_24h.toFixed(2)}`
+            : percentage_24h.toFixed(2)}
+          &nbsp;%
+        </p>
+        <p>{total_volume.toLocaleString()}</p>
+        {/*}<img
         src={percentage_24h <= 0 ? downGraph : upGraph}
         id={styles.thumbGraph}
-      />
+        />*/}
+        <LittleGraph
+          id={id}
+          className={styles.littleGraph}
+          percentage_24h={percentage_24h}
+        />
+      </div>
       {showChart ? (
         <Chart
           coin={coin}
