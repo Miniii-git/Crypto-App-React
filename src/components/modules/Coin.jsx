@@ -35,7 +35,6 @@ export default function Coin({
       setSign("¥");
     }
   }, [currency]);
-
   useEffect(() => {
     const ploting = async () => {
       try {
@@ -43,7 +42,7 @@ export default function Coin({
         const json = await res.json();
         setChartData(json);
       } catch {
-        console.log("err");
+        console.log("error while changing the range (1,7,14,30");
       }
     };
     ploting();
@@ -57,7 +56,9 @@ export default function Coin({
           const json = await res.json();
           setChartData(json);
         } catch {
-          console.log("err");
+          console.log(
+            "error while showing the chart (by clicking on the symbol"
+          );
         }
       };
       ploting();
@@ -96,15 +97,15 @@ export default function Coin({
           &nbsp;%
         </p>
         <p>{total_volume.toLocaleString()}</p>
-        {/*}<img
-        src={percentage_24h <= 0 ? downGraph : upGraph}
-        id={styles.thumbGraph}
-        />*/}
-        <LittleGraph
+        <img
+          src={percentage_24h <= 0 ? downGraph : upGraph}
+          id={styles.thumbGraph}
+        />
+        {/*<LittleGraph
           id={id}
           className={styles.littleGraph}
           percentage_24h={percentage_24h}
-        />
+        />*/}
       </div>
       {showChart ? (
         <Chart

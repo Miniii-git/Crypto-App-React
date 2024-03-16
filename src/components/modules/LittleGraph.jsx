@@ -14,7 +14,7 @@ function LittleGraph({ id, setChartData, percentage_24h }) {
         setDC(json);
       } catch (err) {
         console.log("err in little raph");
-        console.log(err);
+        console.log(err.name);
       }
     };
     ploting();
