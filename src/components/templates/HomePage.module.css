@@ -17,3 +17,18 @@
   padding: 10px;
   outline: none;
 }
+
+/*--------------------------*/
+
+@media (max-width: 768px) {
+  .HomePage {
+    width: 100%;
+    padding: 0 12px;
+    margin-top: 30px;
+  }
+
+  #selectCurrency {
+    width: 100%;
+    margin-top: 10px;
+  }
+}

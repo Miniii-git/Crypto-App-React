@@ -24,3 +24,24 @@
 #coinThumb:hover {
   cursor: pointer;
 }
+
+/*-----------------------*/
+
+@media (max-width: 768px) {
+  .coinInfo {
+    grid-template-columns: 1fr 1.3fr 1fr 1fr;
+    column-gap: 10px;
+    margin: 10px 0;
+    font-size: 13px;
+    align-items: center;
+  }
+
+  .coinInfo p:nth-child(5),
+  #thumbGraph {
+    display: none;
+  }
+
+  #coinSymbol {
+    font-size: 13px;
+  }
+}

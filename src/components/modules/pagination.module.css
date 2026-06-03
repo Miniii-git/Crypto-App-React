@@ -26,3 +26,25 @@ input {
   color: white;
   font-weight: 700;
 }
+
+/*--------------------------*/
+
+@media (max-width: 768px) {
+  .pagination {
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pagination * {
+    margin: 5px;
+    width: 35px;
+  }
+
+  .pagination button,
+  input {
+    font-size: 13px;
+    padding: 5px;
+  }
+}

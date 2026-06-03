@@ -55,3 +55,18 @@
   margin-top: 20px;
   text-align: center;
 }
+
+/*-----------------*/
+
+@media (max-width: 768px) {
+  #searchInput {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .searchList {
+    width: calc(100% - 24px);
+    max-height: 300px;
+    z-index: 10;
+  }
+}

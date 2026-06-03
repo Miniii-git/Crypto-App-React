@@ -71,3 +71,45 @@
 .links a:hover {
   color: #020b24;
 }
+
+/*--------------------------*/
+
+@media (max-width: 768px) {
+  .header {
+    height: 70px;
+    padding-left: 12px;
+    align-items: center;
+  }
+
+  .header h1 {
+    font-size: 24px;
+  }
+
+  .header span {
+    font-size: 26px;
+    line-height: normal;
+  }
+
+  .footer {
+    height: auto;
+    padding: 25px 12px;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .contactUs {
+    margin-top: 0;
+  }
+
+  .links {
+    margin-top: 10px;
+  }
+
+  .footer hr {
+    width: 100%;
+  }
+}

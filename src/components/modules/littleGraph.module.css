@@ -1,4 +1,14 @@
 .littleGraph {
   width: 100px;
   height: 40px;
+  color: red;
+}
+
+/*------------------*/
+
+@media (max-width: 768px) {
+  .littleGraph {
+    width: 80px;
+    height: 35px;
+  }
 }
