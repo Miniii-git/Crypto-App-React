@@ -23,7 +23,6 @@ function Layout({ children }) {
             <h3>Contact Us</h3>
 
             <p>mroostapoor@gmail.com</p>
-            <p>youremail@gmail.com</p>
           </div>
 
           <div className={styles.links}>
@@ -40,7 +39,10 @@ function Layout({ children }) {
         </div>
         <hr />
         <h5>
-          <a href="#" id={styles.mini}>
+          <a
+            href="https://github.com/Miniii-git/Crypto-App-React"
+            id={styles.mini}
+          >
             Made By Mini ♥
           </a>{" "}
           | React.js
